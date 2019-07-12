@@ -47,37 +47,36 @@ http.createServer(function (req, res) {
     DebugMsg('Requested for \"' + req.url.slice(1, req.url.length) + '\"', 'REQUEST');
 
     if (req.url.endsWith('.css')) {
-        setHeader(res, 200, 'text/css');
+        res.setHeader('Content-Type', 'text/css');
         renderPage(res, config.css_dir + req.url);
     }
     else if (req.url.endsWith('.js')) {
-        setHeader(res, 200, 'application/javascript');
+        res.setHeader('Content-Type', 'application/javascript');
         renderPage(res, config.js_dir + req.url);
     }
     else if (req.url.endsWith('.ico')) {
-        setHeader(res, 200, 'image/x-icon');
+        res.setHeader('Content-Type', 'image/x-icon');
         renderPage(res, config.img_dir + req.url);
     }
     else if (req.url.endsWith('.png')) {
-        setHeader(res, 200, 'image/png');
+        res.setHeader('Content-Type', 'image/png');
         renderPage(res, config.img_dir + req.url);
     }
     else if (req.url.endsWith('.jpg') || req.url.endsWith('.jpeg')) {
-        setHeader(res, 200, 'image/jpeg');
+        res.setHeader('Content-Type', 'image/jpeg');
         renderPage(res, config.img_dir + req.url);
     }
     else {
         if (req.url == '/') req.url = '/index';
         var html_page_str = config.html_dir + req.url + '.html';
+        res.setHeader('Content-Type', 'text/html');
         fs.readFile(html_page_str, 'utf8', function (err, data) {
             if (err) {
-                console.error('Can`t load HTML: ' + err);
-                setHeader(res, 404);
-                renderPage(res, config.html_dir + '/404.html');
+                DebugMsg('Can`t load HTML: ' + err);
+                renderPage(res, config.html_dir + '/404.html', 404);
                 return;
             }
-            setHeader(res);
-            renderPage(res, html_page_str);
+            renderPage(res, html_page_str, 200);
         });
     }
 }).listen(port);
@@ -87,15 +86,18 @@ function DebugMsg(msg, debug_prefix = 'DEBUG') {
     if (config.debug) console.log('[' + debug_prefix + '] ' + msg);
 }
 
-function setHeader(response_variable, code = 200, content_type = 'text/html' /* text/html, text/css, application/javascript, application/json, image/jpeg, image/png, image/x-icon */) {
-    DebugMsg('Page code ' + code + ', \"Content-Type\"=\"' + content_type + '\"', 'INFO');
-    response_variable.statusCode = code;
-    response_variable.setHeader('Content-Type', content_type);
-}
-
-function renderPage(response_variable, page_name) {
+function renderPage(response_variable, page_name, code) {
     DebugMsg('Drawing \"' + page_name + '\"...\n', 'DRAWER');
-    fs.createReadStream(page_name).pipe(response_variable);
+    if (code) response_variable.statusCode = code;
+    fs.readFile(page_name, 'utf8', function (err, data) {
+        if (err) {
+            DebugMsg('\"' + page_name + '\" doesn`t exists:');
+            DebugMsg(err);
+            response_variable.end('');
+            return;
+        }
+        fs.createReadStream(page_name).pipe(response_variable);
+    });
 }
 
 /*
