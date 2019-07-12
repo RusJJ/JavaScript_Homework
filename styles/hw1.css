@@ -1,0 +1,53 @@
+﻿body {
+    background: rgb(220, 220, 220);
+}
+
+.simple_text {
+    position: absolute;
+    padding-top: 30%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    font-size: 24px;
+    color: chocolate;
+}
+
+.simple_text_shadow {
+    position: absolute;
+    padding-top: 30%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    font-size: 24px;
+    color: chocolate;
+    text-shadow: 1px 1px 0px black;
+}
+
+.simple_text_glow {
+    position: absolute;
+    padding-top: 30%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    font-size: 24px;
+    color: chocolate;
+    text-shadow: 0px 0px 2em chocolate;
+}
+
+.simple_text_shadow_glow {
+    position: absolute;
+    padding-top: 30%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    font-size: 24px;
+    color: chocolate;
+    text-shadow: 1px 1px 0px black, 0px 0px 2em chocolate;
+}
+
+.copyright {
+    position: absolute;
+    padding-top: 97%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    text-decoration-line: underline;
+    font-weight: bold;
+    font-size: 16px;
+    color: black;
+}

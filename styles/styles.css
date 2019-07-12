@@ -1,0 +1,97 @@
+﻿/* Imports */
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap');
+
+/* Blocks */
+body {
+    background: #ffe4e1;
+}
+
+/* Classes */
+.bg_style_01 {
+    background: rgb(165, 211, 255) url('bg_01.png') repeat;
+}
+
+.bg_style_02 {
+    background: rgb(165, 211, 255);
+}
+
+.mono_font {
+    white-space: pre;
+    font-size: 16px;
+    color: black;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.user_icon {
+    position: fixed;
+    right: 8px;
+    top: 8px;
+    width: 44px;
+    height: 44px;
+}
+
+.user_name {
+    position: fixed;
+    font-family: serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: lightgray;
+    right: 72px;
+    top: 22px;
+}
+
+/* IDs */
+#body {
+    position: fixed;
+    background: rgb(185, 221, 255);
+    padding: 8px;
+    margin-top: 64px;
+    margin-bottom: 64px;
+    box-shadow: 0px 0px 4px;
+    border-width: thin;
+    border-style: solid;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+#body_no_footer {
+    position: fixed;
+    padding: 8px;
+    margin-top: 64px;
+    box-shadow: 0px 0px 4px;
+    border-width: thin;
+    border-style: solid;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+#header {
+    position: fixed;
+    padding: 8px;
+    height: 44px;
+    margin: auto;
+    box-shadow: 0px 0px 4px;
+    border-width: thin;
+    border-style: solid;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    background: rgb(41, 27, 222);
+}
+
+#footer {
+    position: fixed;
+    height: 44px;
+    padding: 8px;
+    margin: auto;
+    border-width: thin;
+    border-style: solid;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    background: rgb(41, 27, 222);
+}
+
+/* End */

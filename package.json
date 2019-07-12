@@ -1,0 +1,12 @@
+{
+  "name": "rusjjs-js",
+  "version": "1.1.0",
+  "description": "RusJJ's JavaScript homework!",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": {
+    "name": "RusJJ aka Ruslan Puntus"
+  }
+}

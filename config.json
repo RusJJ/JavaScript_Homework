@@ -1,0 +1,7 @@
+{
+  "enable_debug": true,
+  "default_styles_folder": "styles",
+  "default_html_folder": "html",
+  "default_images_folder": "images",
+  "default_javascript_folder": "js"
+}

@@ -1,0 +1,9 @@
+﻿#icon_circle_rounded {
+    box-shadow: 1px 1px 4px;
+    border-radius: 50%;
+}
+
+#icon_square_rounded {
+    box-shadow: 1px 1px 4px;
+    border-radius: 1%;
+}
