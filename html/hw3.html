@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="hw3.css">
+    <script async src="hw3_btns.js"></script>
+    <title>Homework 3</title>
+</head>
+<body>
+    <button id="droplist" class="tab_button">Droplist</button><button id="popup" class="tab_button">PopUp</button><button id="slider" class="tab_button">Slider</button>
+    <div id="droplist_block" class="hidden">
+        <button id="droplist_btn" class="droplist_button">List</button>
+        <div id="droplist_list" class="hidden droplist_list">
+            <div class="droplist_item">Item 1</div>
+            <div class="droplist_item">Item 2</div>
+            <div class="droplist_item">Item 3</div>
+        </div>
+    </div>
+    <div id="popup_block" class="hidden">
+        <button id="popup_btn" class="droplist_button">Popup</button>
+        <div id="popup_list" class="hidden_center">
+            <div class="popup" id="popup_bg"></div>
+            <div class="popup_window">
+                <div class="popup_window_header">
+                    <span>This is a popup window.<br />With a new line.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="slider_block" class="hidden">
+        <div class="scale_on_pointer slider">
+            <img id="slider_img" src="slider/1.png" height="256"/>
+        </div>
+    </div>
+</body>
+</html>

@@ -26,11 +26,11 @@ fs.readFile('config.json', 'utf8', function (err, data) {
         console.error('Using default sets.');
         return;
     }
-    console.log('[CONFIG] \x1b[43m\x1b[30mDebug: ' + (( config.debug = parsed_config.enable_debug ) ? '\x1b[42mtrue' :'\x1b[41mfalse') + '\x1b[0m');
-    console.log('[CONFIG] \x1b[43m\x1b[30mCSS Folder: \x1b[46m' + (config.css_dir = parsed_config.default_styles_folder ) + '\x1b[0m');
-    console.log('[CONFIG] \x1b[43m\x1b[30mHTML Folder: \x1b[46m' + (config.html_dir = parsed_config.default_html_folder ) + '\x1b[0m');
-    console.log('[CONFIG] \x1b[43m\x1b[30mImages Folder: \x1b[46m' + (config.img_dir = parsed_config.default_images_folder ) + '\x1b[0m');
-    console.log('[CONFIG] \x1b[43m\x1b[30mJavaScript Folder: \x1b[46m' + (config.js_dir = parsed_config.default_javascript_folder) + '\x1b[0m');
+    console.log('[CONFIG] \x1b[43m\x1b[30mDebug:' + (( config.debug = parsed_config.enable_debug ) ? '\x1b[42mtrue' :'\x1b[41mfalse') + '\x1b[0m');
+    console.log('[CONFIG] \x1b[43m\x1b[30mCSS Folder:\x1b[46m' + (config.css_dir = parsed_config.default_styles_folder ) + '\x1b[0m');
+    console.log('[CONFIG] \x1b[43m\x1b[30mHTML Folder:\x1b[46m' + (config.html_dir = parsed_config.default_html_folder ) + '\x1b[0m');
+    console.log('[CONFIG] \x1b[43m\x1b[30mImages Folder:\x1b[46m' + (config.img_dir = parsed_config.default_images_folder ) + '\x1b[0m');
+    console.log('[CONFIG] \x1b[43m\x1b[30mJavaScript Folder:\x1b[46m' + (config.js_dir = parsed_config.default_javascript_folder) + '\x1b[0m');
     console.log('');
 });
 

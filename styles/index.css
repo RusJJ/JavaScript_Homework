@@ -43,8 +43,9 @@ body {
     border-style: solid;
     width: 50%;
     top: 78px;
-    left: 25%;
+    left: 50%;
     background: white;
+    transform: translateX(-50%);
 }
 
 /* End */
