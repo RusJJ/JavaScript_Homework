@@ -2,6 +2,11 @@
     text-align: center;
 }
 
+img {
+    margin: 0px;
+    padding: 0px;
+}
+
 .popup {
     position: fixed;
     cursor: pointer;
@@ -129,13 +134,43 @@ button:focus {
     width: auto;
     display: inline-block;
     padding: 0px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    background: rgb(240, 240, 240);
+}
+
+.slider:hover {
+    background: rgb(255, 255, 255);
 }
 
 .scale_on_pointer {
-    transition: 0.4s;
+    transition: 0.2s;
 }
 
 .scale_on_pointer:hover {
-    transform: scale(1.02, 1.02);
-    transition: 0.4s;
+    transform: scale(1.01, 1.01);
+    transition: 0.2s;
+}
+
+.slider_pointer {
+    position: inherit;
+    height: auto;
+    width: 20%;
+    font-size: 24px;
+    display: inline-block;
+    left: 50%;
+    background: rgb(158, 158, 158);
+    border-radius: 24px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }

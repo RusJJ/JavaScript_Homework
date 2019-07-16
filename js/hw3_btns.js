@@ -38,7 +38,11 @@ slider.onclick = function () {
     toggleDisplay('slider_block');
 };
 
-slider_img.onclick = function () {
+l_arrow.onclick = function () {
+    switchSlider('slider_img', 'slider', false);
+};
+
+r_arrow.onclick = function () {
     switchSlider('slider_img', 'slider', true);
 };
 
