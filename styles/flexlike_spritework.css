@@ -1,0 +1,35 @@
+﻿
+
+.sprites {
+    background-image: url(/content/content_sprites.png);
+}
+
+.small_logo {
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    height: 24px;
+    width: 24px;
+    display: block;
+}
+
+.empty_logo_01 {
+    height: 28px;
+    margin: 0 16px;
+    width: 1px;
+}
+
+.big_logo {
+    background-repeat: no-repeat;
+    background-position: -24px 0px;
+    height: 24px;
+    width: 96px;
+    display: block;
+}
+
+.user_logo {
+    background-repeat: no-repeat;
+    background-position: -24px 0px;
+    height: 24px;
+    width: 24px;
+    display: block;
+}

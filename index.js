@@ -3,6 +3,8 @@ var config = {
     css_dir: 'styles',
     html_dir: 'html',
     img_dir: 'images',
+    json_dir: 'json',
+    xml_dir: 'xml',
     js_dir: 'js'
 };
 
@@ -30,6 +32,8 @@ fs.readFile('config.json', 'utf8', function (err, data) {
     console.log('[CONFIG] \x1b[43m\x1b[30mCSS Folder:\x1b[46m' + (config.css_dir = parsed_config.default_styles_folder ) + '\x1b[0m');
     console.log('[CONFIG] \x1b[43m\x1b[30mHTML Folder:\x1b[46m' + (config.html_dir = parsed_config.default_html_folder ) + '\x1b[0m');
     console.log('[CONFIG] \x1b[43m\x1b[30mImages Folder:\x1b[46m' + (config.img_dir = parsed_config.default_images_folder ) + '\x1b[0m');
+    console.log('[CONFIG] \x1b[43m\x1b[30mJSON Folder:\x1b[46m' + (config.json_dir = parsed_config.default_json_folder ) + '\x1b[0m');
+    console.log('[CONFIG] \x1b[43m\x1b[30mXML Folder:\x1b[46m' + (config.xml_dir = parsed_config.default_xml_folder ) + '\x1b[0m');
     console.log('[CONFIG] \x1b[43m\x1b[30mJavaScript Folder:\x1b[46m' + (config.js_dir = parsed_config.default_javascript_folder) + '\x1b[0m');
     console.log('');
 });
@@ -54,6 +58,14 @@ http.createServer(function (req, res) {
         res.setHeader('Content-Type', 'application/javascript');
         renderPage(res, config.js_dir + req.url);
     }
+    else if (req.url.endsWith('.json')) {
+        res.setHeader('Content-Type', 'application/json');
+        renderPage(res, config.json_dir + req.url);
+    }
+    else if (req.url.endsWith('.xml')) {
+        res.setHeader('Content-Type', 'text/xml');
+        renderPage(res, config.xml_dir + req.url);
+    }
     else if (req.url.endsWith('.ico')) {
         res.setHeader('Content-Type', 'image/x-icon');
         renderPage(res, config.img_dir + req.url);
@@ -67,8 +79,9 @@ http.createServer(function (req, res) {
         renderPage(res, config.img_dir + req.url);
     }
     else {
-        if (req.url == '/') req.url = '/index';
-        var html_page_str = config.html_dir + req.url + '.html';
+        if (req.url.endsWith('/')) req.url += 'index';
+        if (fs.existsSync(config.html_dir + req.url) && fs.lstatSync(config.html_dir + req.url).isDirectory()) req.url += '/index';
+        const html_page_str = config.html_dir + req.url + '.html';
         res.setHeader('Content-Type', 'text/html');
         fs.readFile(html_page_str, 'utf8', function (err, data) {
             if (err) {

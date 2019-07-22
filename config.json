@@ -3,5 +3,7 @@
   "default_styles_folder": "styles",
   "default_html_folder": "html",
   "default_images_folder": "images",
+  "default_json_folder": "json",
+  "default_xml_folder": "xml",
   "default_javascript_folder": "js"
 }
