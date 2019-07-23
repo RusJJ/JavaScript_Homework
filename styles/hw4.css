@@ -1,0 +1,129 @@
+﻿body {
+    display: block;
+    text-align: center;
+}
+
+input {
+    margin: 0;
+    outline: 0;
+    border: 0px solid;
+}
+    textarea:focus, input:focus {
+        outline: none;
+    }
+
+button {
+    cursor: pointer;
+}
+    button:focus {
+        outline: 0;
+    }
+
+.login_form {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    margin: 0;
+    min-height: 60%;
+}
+
+.login_form_body {
+    position: inherit;
+    height: auto;
+    transform: translateX(-50%);
+    left: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: rgb(248, 248, 248);
+    padding: 16px;
+    margin: 0;
+    top: 28%;
+}
+
+.inputfield_01 {
+    margin: 2px;
+    padding: 0;
+    border: 1px solid black;
+}
+
+.inputfield_02 {
+    margin: 2px;
+    padding: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.0);
+    width: 180px;
+}
+
+.inline_block {
+    display: inline-block;
+}
+
+.login_inputfield {
+    display: inline-block;
+    width: auto;
+    height: 100%;
+}
+
+.colored_brighter {
+    background: rgb(238, 238, 238);
+}
+
+.colored_darker {
+    background: rgb(218, 218, 218);
+}
+
+#usrnm, #pswd {
+    font-size: 10px;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.sprites {
+    background-image: url(/content/hw4_sprites.png);
+}
+
+.username_logo {
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    zoom: 0.56;
+    width: 104px;
+    height: 24px;
+}
+
+.password_logo {
+    background-repeat: no-repeat;
+    background-position: 0px -24px;
+    zoom: 0.56;
+    width: 104px;
+    height: 24px;
+}
+
+.small-margin {
+    margin-top: 2px;
+    margin-left: 2px;
+}
+
+.centered-x {
+    transform: translateX(-50%);
+}
+
+.centered-y {
+    transform: translateY(-50%);
+}
+
+.centered-pos-x {
+    left: 50%;
+}
+
+.centered-pos-y {
+    top: 50%
+}

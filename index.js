@@ -11,6 +11,7 @@ var config = {
 const http = require('http'), fs = require('fs');
 const port = process.env.PORT || 80;
 
+const jlogin = require('./nodejs/jlogin');
 
 fs.readFile('config.json', 'utf8', function (err, data) {
     if (err) {
@@ -48,49 +49,60 @@ fs.readFile('rewrites.json', 'utf8', function (err, data) {
 
 console.log('[START] Trying to initialize server...');
 http.createServer(function (req, res) {
-    DebugMsg('Requested for \"' + req.url.slice(1, req.url.length) + '\"', 'REQUEST');
+    DebugMsg('Requested for \"' + req.url.slice(1, req.url.length) + '\"', 'REQUEST <' + req.method +'>');
+    if (req.method == 'POST' && req.url == "/login") {
+        let dataString = '';
 
-    if (req.url.endsWith('.css')) {
-        res.setHeader('Content-Type', 'text/css');
-        renderPage(res, config.css_dir + req.url);
-    }
-    else if (req.url.endsWith('.js')) {
-        res.setHeader('Content-Type', 'application/javascript');
-        renderPage(res, config.js_dir + req.url);
-    }
-    else if (req.url.endsWith('.json')) {
-        res.setHeader('Content-Type', 'application/json');
-        renderPage(res, config.json_dir + req.url);
-    }
-    else if (req.url.endsWith('.xml')) {
-        res.setHeader('Content-Type', 'text/xml');
-        renderPage(res, config.xml_dir + req.url);
-    }
-    else if (req.url.endsWith('.ico')) {
-        res.setHeader('Content-Type', 'image/x-icon');
-        renderPage(res, config.img_dir + req.url);
-    }
-    else if (req.url.endsWith('.png')) {
-        res.setHeader('Content-Type', 'image/png');
-        renderPage(res, config.img_dir + req.url);
-    }
-    else if (req.url.endsWith('.jpg') || req.url.endsWith('.jpeg')) {
-        res.setHeader('Content-Type', 'image/jpeg');
-        renderPage(res, config.img_dir + req.url);
+        req.on('data', function (data) {
+            dataString += data;
+        });
+        req.on('end', function () {
+            jlogin.processPOSTMethod(dataString);
+        });
     }
     else {
-        if (req.url.endsWith('/')) req.url += 'index';
-        if (fs.existsSync(config.html_dir + req.url) && fs.lstatSync(config.html_dir + req.url).isDirectory()) req.url += '/index';
-        const html_page_str = config.html_dir + req.url + '.html';
-        res.setHeader('Content-Type', 'text/html');
-        fs.readFile(html_page_str, 'utf8', function (err, data) {
-            if (err) {
-                DebugMsg('Can`t load HTML: ' + err);
-                renderPage(res, config.html_dir + '/404.html', 404);
-                return;
-            }
-            renderPage(res, html_page_str, 200);
-        });
+        if (req.url.endsWith('.css')) {
+            res.setHeader('Content-Type', 'text/css');
+            renderPage(res, config.css_dir + req.url);
+        }
+        else if (req.url.endsWith('.js')) {
+            res.setHeader('Content-Type', 'application/javascript');
+            renderPage(res, config.js_dir + req.url);
+        }
+        else if (req.url.endsWith('.json')) {
+            res.setHeader('Content-Type', 'application/json');
+            renderPage(res, config.json_dir + req.url);
+        }
+        else if (req.url.endsWith('.xml')) {
+            res.setHeader('Content-Type', 'text/xml');
+            renderPage(res, config.xml_dir + req.url);
+        }
+        else if (req.url.endsWith('.ico')) {
+            res.setHeader('Content-Type', 'image/x-icon');
+            renderPage(res, config.img_dir + req.url);
+        }
+        else if (req.url.endsWith('.png')) {
+            res.setHeader('Content-Type', 'image/png');
+            renderPage(res, config.img_dir + req.url);
+        }
+        else if (req.url.endsWith('.jpg') || req.url.endsWith('.jpeg')) {
+            res.setHeader('Content-Type', 'image/jpeg');
+            renderPage(res, config.img_dir + req.url);
+        }
+        else {
+            if (req.url.endsWith('/')) req.url += 'index';
+            if (fs.existsSync(config.html_dir + req.url) && fs.lstatSync(config.html_dir + req.url).isDirectory()) req.url += '/index';
+            const html_page_str = config.html_dir + req.url + '.html';
+            res.setHeader('Content-Type', 'text/html');
+            fs.readFile(html_page_str, 'utf8', function (err, data) {
+                if (err) {
+                    DebugMsg('Can`t load HTML: ' + err);
+                    renderPage(res, config.html_dir + '/404.html', 404);
+                    return;
+                }
+                renderPage(res, html_page_str, 200);
+            });
+        }
     }
 }).listen(port);
 console.log('[START] Server has been started (Port: ' + port + ').\n\n');
